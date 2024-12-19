@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thae Lay's Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #4A90E2;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            animation: fadeInHeader 2s ease-out;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            font-weight: 600;
+            font-family: 'Sacramento', cursive;
+            animation: slideInUp 1.5s ease-out;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-top: 15px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeInText 2s ease-out;
+        }
+
+        .about h2 {
+            font-size: 3em;
+            color: #4A90E2;
+            margin-bottom: 20px;
+            font-family: 'Sacramento', cursive;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        .about p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #555;
+            animation: fadeInText 2s ease-out;
+        }
+
+        .about p span {
+            font-weight: bold;
+            color: #ff5733;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            background-color: #e6f7ff;
+        }
+
+        .gallery img, .gallery video {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeInImage 2s ease-out;
+            cursor: pointer;
+            object-fit: cover;
+            margin: auto;
+        }
+
+        .gallery img:hover, .gallery video:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInHeader {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInImage {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2.8em;
+            }
+
+            .about h2 {
+                font-size: 2.5em;
+            }
+
+            .about p {
+                font-size: 1.1em;
+                max-width: 100%;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery img, .gallery video {
+                max-width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .about h2 {
+                font-size: 2em;
+            }
+
+            .about p {
+                font-size: 1em;
+            }
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img, .lightbox video {
+            max-width: 70%;
+            max-height: 80%;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Thae Lay's Blog</h1>
+        <p>A Journey of Love, Forever Together</p>
+    </header>
+
+    <section class="about">
+        <h2>Love Message For Thae Lay</h2>
+        <p>Thae Lay, my heart is forever bound to yours, beating only for you. Every breath I take carries your name, every heartbeat whispers that you are my reason for living. When I think of you, the world fades away, and all that remains is the beauty of your smile, the warmth of your touch, and the sound of your laughter. You are the dream I never knew I was waiting for, the love I never thought I deserved.</p>
+        <p>Every time we laugh together, every moment we share, time itself seems to stop. In those moments, it feels like we are the only two souls in the world, lost in the magic we create. I want to stay in this place with you forever, where nothing else matters but the love we share. A place where the past is just a memory, and the future holds only us, together.</p>
+        <p>No matter where life takes us, no matter the obstacles, the storms, or the challenges we face, I will always stand by your side. You are my light when the world feels dark, the calm in the chaos. Thae Lay, my love for you is a constant, unchanging force that will never fade.</p>
+        <p>When I look into your eyes, I see everything I’ve ever dreamed of. I see the future, our future, a life filled with love and laughter. You are my heart, my soul, my everything. With you, I am whole. I promise to love you endlessly, through every trial, through every triumph, and through all the years to come.</p>
+        <p>As long as the stars shine in the night sky, my love for you will remain. Every moment with you is a treasure, and I will cherish it forever. You are not just my love; you are my eternity.</p>
+
+        <img src="images/love-image.jpg" alt="Main Love Image" class="main-image" onclick="openLightbox(this)">
+    </section>
+
+    <section class="video-section">
+        <h2>Watch Our Beautiful Love Story</h2>
+        <video controls onclick="openLightbox(this)" class="gallery-item">
+            <source src="videos/love-story.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <section class="gallery">
+        <h2>Love Moments with Thae Lay</h2>
+        <img src="1.jpg" alt="Love Moment 1" onclick="openLightbox(this)">
+        <img src="2.jpg" alt="Love Moment 2" onclick="openLightbox(this)">
+        <img src="3.jpg" alt="Love Moment 3" onclick="openLightbox(this)">
+        <img src="4.jpg" alt="Love Moment 4" onclick="openLightbox(this)">
+        <img src="5.jpg" alt="Love Moment 5" onclick="openLightbox(this)">
+        <img src="6.jpg" alt="Love Moment 6" onclick="openLightbox(this)">
+        <img src="7.jpg" alt="Love Moment 6" onclick="openLightbox(this)">
+        <img src="8.jpg" alt="Love Moment 6" onclick="openLightbox(this)">
+        <img src="9.jpg" alt="Love Moment 6" onclick="openLightbox(this)">
+        <img src="10.jpg" alt="Love Moment 6" onclick="openLightbox(this)">
+        
+        <video controls onclick="openLightbox(this)" class="gallery-item">
+            <source src="videos/love-clip1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video controls onclick="openLightbox(this)" class="gallery-item">
+            <source src="videos/love-clip2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video controls onclick="openLightbox(this)" class="gallery-item">
+            <source src="videos/love-clip3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">×</span>
+        <img id="lightbox-image" src="" alt="Lightbox Image">
+        <video id="lightbox-video" controls>
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        function openLightbox(element) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxVideo = document.getElementById('lightbox-video');
+
+            if (element.tagName === 'IMG') {
+                lightboxImage.src = element.src;
+                lightboxImage.style.display = 'block';
+                lightboxVideo.style.display = 'none';
+            } else if (element.tagName === 'VIDEO') {
+                lightboxVideo.src = element.src;
+                lightboxVideo.style.display = 'block';
+                lightboxImage.style.display = 'none';
+            }
+
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
